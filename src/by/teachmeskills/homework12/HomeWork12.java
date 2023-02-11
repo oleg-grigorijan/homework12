@@ -5,6 +5,9 @@ import by.teachmeskills.homework12.util.UserInputUtils;
 
 import java.util.Scanner;
 
+import static by.teachmeskills.homework12.util.EncryptionUtils.decryptWithCaesar;
+import static by.teachmeskills.homework12.util.EncryptionUtils.encryptWithCaesar;
+
 public class HomeWork12 {
 
     public static void main(String[] args) {
@@ -27,12 +30,20 @@ public class HomeWork12 {
                     System.out.println("Sum: " + sum);
                 }
                 case 2 -> {
-                    // TODO: Implement
-                    throw new IllegalStateException("Not yet implemented");
+                    Scanner caseScaner = new Scanner(System.in);
+                    System.out.print("Input string for encrypt: ");
+                    String stringForEncoding = caseScaner.nextLine();
+                    System.out.print("Input key for encrypt: ");
+                    int key = caseScaner.nextInt();
+                    System.out.print("Encrypted string is: " + encryptWithCaesar(stringForEncoding, key));
                 }
                 case 3 -> {
-                    // TODO: Implement
-                    throw new IllegalStateException("Not yet implemented");
+                    Scanner caseScaner = new Scanner(System.in);
+                    System.out.print("Input string for decrypt: ");
+                    String stringForEncoding = caseScaner.nextLine();
+                    System.out.print("Input key for decrypt: ");
+                    int key = caseScaner.nextInt();
+                    System.out.print("Decrypted string is: " + decryptWithCaesar(stringForEncoding, key));
                 }
                 case 0 -> {
                     return;

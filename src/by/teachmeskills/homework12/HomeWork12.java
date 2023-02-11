@@ -13,6 +13,7 @@ public class HomeWork12 {
                 """
                         Choose task:
                         1. Sum
+                        2. Average
                         0. Exit"""
         );
         while (true) {
@@ -23,6 +24,11 @@ public class HomeWork12 {
                     int[] numbers = UserInputUtils.requestArray();
                     double sum = ArrayUtils.sumAll(numbers);
                     System.out.println("Sum: " + sum);
+                }
+                case 2 -> {
+                    int[] numbers = UserInputUtils.requestArray();
+                    double avg = ArrayUtils.calcAverage(numbers);
+                    System.out.println("Average: " + avg);
                 }
                 case 0 -> {
                     return;

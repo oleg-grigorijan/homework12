@@ -13,8 +13,8 @@ public class HomeWork12 {
                 """
                         Choose task:
                         1. Sum
-                        2. Caesar cipher encryption
-                        3. Caesar cipher decryption
+                        2. Caesar cipher encryption             
+                        3. Average
                         0. Exit"""
         );
         while (true) {
@@ -31,8 +31,9 @@ public class HomeWork12 {
                     throw new IllegalStateException("Not yet implemented");
                 }
                 case 3 -> {
-                    // TODO: Implement
-                    throw new IllegalStateException("Not yet implemented");
+                    int[] numbers = UserInputUtils.requestArray();
+                    double avg = ArrayUtils.calcAverage(numbers);
+                    System.out.println("Average: " + avg);
                 }
                 case 0 -> {
                     return;

@@ -13,6 +13,8 @@ public class HomeWork12 {
                 """
                         Choose task:
                         1. Sum
+                        2. Caesar cipher encryption
+                        3. Caesar cipher decryption
                         0. Exit"""
         );
         while (true) {
@@ -23,6 +25,14 @@ public class HomeWork12 {
                     int[] numbers = UserInputUtils.requestArray();
                     double sum = ArrayUtils.sumAll(numbers);
                     System.out.println("Sum: " + sum);
+                }
+                case 2 -> {
+                    // TODO: Implement
+                    throw new IllegalStateException("Not yet implemented");
+                }
+                case 3 -> {
+                    // TODO: Implement
+                    throw new IllegalStateException("Not yet implemented");
                 }
                 case 0 -> {
                     return;

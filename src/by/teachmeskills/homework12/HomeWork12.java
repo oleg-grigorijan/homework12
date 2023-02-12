@@ -28,7 +28,7 @@ public class HomeWork12 {
                     System.out.println("Sum: " + sum);
                 }
                 case 2 -> {
-                    System.out.println(EncryptionUtils.encryptWithCaesar("XYZ", 5));
+                    System.out.println(EncryptionUtils.encryptWithCaesar("XSZ", 5));
                 }
                 case 3 -> {
                     // TODO: Implement

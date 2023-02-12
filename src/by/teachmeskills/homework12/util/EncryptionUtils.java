@@ -1,7 +1,7 @@
 package by.teachmeskills.homework12.util;
 
 public class EncryptionUtils {
-
+public static final int NUM_OF_LATIN_LETTERS=26;
     /**
      * Encrypts given string with a Caesar cipher
      *
@@ -13,7 +13,20 @@ public class EncryptionUtils {
      */
     public static String encryptWithCaesar(String source, int key) {
         // TODO: Implement
-        throw new IllegalStateException("Not yet implemented");
+
+        char[] chars = source.toCharArray();
+        for (int i = 0; i < source.length(); i++) {
+            if (chars[i] < 'X' && chars[i] > 'A') {
+                chars[i] = (char) (chars[i] + key);
+            } else if (chars[i] > 'W' && chars[i] <= 'Z') {
+                chars[i] = (char) (chars[i] - NUM_OF_LATIN_LETTERS + key);
+            }
+else if(chars[i]>'Z'||chars[i]<'A'){
+    throw new IllegalStateException("Enter correct line which consists of capital letters");
+            }
+        }
+        source = String.valueOf(chars);
+        return source;
     }
 
     /**
@@ -27,6 +40,18 @@ public class EncryptionUtils {
      */
     public static String decryptWithCaesar(String source, int key) {
         // TODO: Implement
-        throw new IllegalStateException("Not yet implemented");
+        char[] chars = source.toCharArray();
+        for (int i = 0; i < source.length(); i++) {
+            if (chars[i] < 'X' && chars[i] > 'A') {
+                chars[i] = (char) (chars[i] + key);
+            } else if (chars[i] > 'W' && chars[i] <= 'Z') {
+                chars[i] = (char) (chars[i] + NUM_OF_LATIN_LETTERS - key);
+            }
+            else if(chars[i]>'Z'||chars[i]<'A'){
+                throw new IllegalStateException("Enter correct line which consists of capital letters");
+            }
+        }
+        source = String.valueOf(chars);
+        return source;
     }
 }

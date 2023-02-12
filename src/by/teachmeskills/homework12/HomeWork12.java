@@ -1,6 +1,7 @@
 package by.teachmeskills.homework12;
 
 import by.teachmeskills.homework12.util.ArrayUtils;
+import by.teachmeskills.homework12.util.EncryptionUtils;
 import by.teachmeskills.homework12.util.UserInputUtils;
 
 import java.util.Scanner;
@@ -13,8 +14,9 @@ public class HomeWork12 {
                 """
                         Choose task:
                         1. Sum
-                        2. Caesar cipher encryption             
-                        3. Average
+                        2. Caesar cipher encryption
+                        3. Caesar cipher decryption           
+                        4. Average
                         0. Exit"""
         );
         while (true) {
@@ -27,10 +29,22 @@ public class HomeWork12 {
                     System.out.println("Sum: " + sum);
                 }
                 case 2 -> {
-                    // TODO: Implement
-                    throw new IllegalStateException("Not yet implemented");
+                    System.out.println("Enter string (uppercase latin characters): ");
+                    String str = scanner.next();
+                    System.out.print("Enter key: ");
+                    int key = scanner.nextInt();
+                    String decryptString = EncryptionUtils.encryptWithCaesar(str, key);
+                    System.out.println("Your decryption string: " + decryptString);
                 }
                 case 3 -> {
+                    System.out.println("Enter decryption string (uppercase latin characters): ");
+                    String decryptStr = scanner.next();
+                    System.out.print("Enter key: ");
+                    int key = scanner.nextInt();
+                    String encryptString = EncryptionUtils.decryptWithCaesar(decryptStr, key);
+                    System.out.println("Your encryption string: " + encryptString);
+                }
+                case 4 -> {
                     int[] numbers = UserInputUtils.requestArray();
                     double avg = ArrayUtils.calcAverage(numbers);
                     System.out.println("Average: " + avg);

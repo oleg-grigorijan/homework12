@@ -20,4 +20,18 @@ public class UserInputUtils {
         }
         return array;
     }
+
+    public static String requestString(){
+        Scanner scanner =new Scanner(System.in);
+        System.out.println("String for encryption: ");
+        String source= scanner.nextLine();
+        return source;
+    }
+
+    public static int requestKey(){
+        Scanner scanner =new Scanner(System.in);
+        System.out.println("String for encryption: ");
+
+        return scanner.nextInt();
+    }
 }

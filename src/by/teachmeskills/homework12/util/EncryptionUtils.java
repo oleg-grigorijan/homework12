@@ -29,4 +29,17 @@ public class EncryptionUtils {
         // TODO: Implement
         throw new IllegalStateException("Not yet implemented");
     }
+
+    public static boolean isReliableToCoding(String source) {
+        if (source.isBlank()) {
+            throw new IllegalArgumentException("Error. Inadmissible length of string");
+        }
+        char[] chars = source.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            if (!(i >= 'A' || i <= 'Z')) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

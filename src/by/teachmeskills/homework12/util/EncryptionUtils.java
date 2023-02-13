@@ -35,8 +35,17 @@ public class EncryptionUtils {
      * @see <a href="https://en.wikipedia.org/wiki/Caesar_cipher">Caesar Chipher</a>
      */
     public static String decryptWithCaesar(String source, int key) {
-        // TODO: Implement
-        throw new IllegalStateException("Not yet implemented");
+        if (!isReliableToCoding(source)) {
+            throw new IllegalArgumentException("String need to contain only upper-case english letters");
+        }
+        char[] chars = source.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            chars[i] -= key;
+            if (chars[i] < 'A') {
+                chars[i] = (char) (chars[i] + 'Z' - 'A' + 1);
+            }
+        }
+        return String.valueOf(chars);
     }
 
     public static boolean isReliableToCoding(String source) {

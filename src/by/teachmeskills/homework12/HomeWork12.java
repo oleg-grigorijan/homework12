@@ -1,6 +1,7 @@
 package by.teachmeskills.homework12;
 
 import by.teachmeskills.homework12.util.ArrayUtils;
+import by.teachmeskills.homework12.util.EncryptionUtils;
 import by.teachmeskills.homework12.util.UserInputUtils;
 
 import java.util.Scanner;

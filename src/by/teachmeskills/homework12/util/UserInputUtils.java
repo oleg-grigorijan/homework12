@@ -20,16 +20,4 @@ public class UserInputUtils {
         }
         return array;
     }
-
-    public static String userScannerStr(String str) {
-        Scanner scanner = new Scanner(System.in);
-        String scan = scanner.nextLine();
-        return scan;
-    }
-
-    public static String userScannerKey(int i) {
-        Scanner scanner = new Scanner(System.in);
-        String scan = scanner.nextLine();
-        return scan;
-    }
 }

@@ -15,8 +15,8 @@ public class HomeWork12 {
                         Choose task:
                         1. Sum
                         2. Average
-                        2. Caesar cipher encryption
-                        3. Caesar cipher decryption
+                        3. Caesar cipher encryption
+                        4. Caesar cipher decryption
                         0. Exit"""
         );
         while (true) {

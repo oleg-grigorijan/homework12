@@ -2,7 +2,6 @@ package by.teachmeskills.homework12.util;
 
 public class EncryptionUtils {
 
-    private static final int UPPERCASE_CHARACTER_RANGE = 26;
     /**
      * Encrypts given string with a Caesar cipher
      *

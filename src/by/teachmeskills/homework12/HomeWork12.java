@@ -16,6 +16,7 @@ public class HomeWork12 {
                         1. Sum
                         2. Caesar cipher encryption
                         3. Caesar cipher decryption
+                        4. Average
                         0. Exit"""
         );
         while (true) {
@@ -44,6 +45,11 @@ public class HomeWork12 {
                     int key = sc.nextInt();
                     System.out.println("Decrypted string is: " +
                             EncryptionUtils.decryptWithCaesar(str, key));
+                }
+                case 4 -> {
+                    int[] numbers = UserInputUtils.requestArray();
+                    double avg = ArrayUtils.calcAverage(numbers);
+                    System.out.println("Average: " + avg);
                 }
                 case 0 -> {
                     return;

@@ -1,7 +1,6 @@
 package by.teachmeskills.homework12;
 
 import by.teachmeskills.homework12.util.ArrayUtils;
-import by.teachmeskills.homework12.util.EncryptionUtils;
 import by.teachmeskills.homework12.util.UserInputUtils;
 
 import java.util.Scanner;
@@ -14,6 +13,7 @@ public class HomeWork12 {
                 """
                         Choose task:
                         1. Sum
+                        2. Average
                         2. Caesar cipher encryption
                         3. Caesar cipher decryption
                         0. Exit"""
@@ -28,6 +28,11 @@ public class HomeWork12 {
                     System.out.println("Sum: " + sum);
                 }
                 case 2 -> {
+                    int[] numbers = UserInputUtils.requestArray();
+                    double avg = ArrayUtils.calcAverage(numbers);
+                    System.out.println("Average: " + avg);
+                }
+                case 3 -> {
                     System.out.println("Enter a string to encode: ");
                     Scanner scanner1 = new Scanner(System.in);
                     String userStr = scanner1.nextLine();
@@ -35,7 +40,7 @@ public class HomeWork12 {
                     int userKey = scanner1.nextInt();
                     System.out.println(EncryptionUtils.encryptWithCaesar(userStr, userKey));
                 }
-                case 3 -> {
+                case 4 -> {
                     System.out.println("Enter a string to decode: ");
                     Scanner scanner2 = new Scanner(System.in);
                     String userStr = scanner2.nextLine();

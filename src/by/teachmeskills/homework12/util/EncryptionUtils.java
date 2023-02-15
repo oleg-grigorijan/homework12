@@ -55,15 +55,14 @@ public class EncryptionUtils {
         return cipherString;
 
     }
+
     public static String getPhrase() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
-
     public static int getKey() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
     }
-
 
 }

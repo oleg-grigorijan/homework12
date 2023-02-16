@@ -15,4 +15,16 @@ public class ArrayUtils {
                 ? 0.0
                 : (double) sumAll(numbers) / numbers.length;
     }
+
+    public static double getMin(int... numbers) {
+        int min = 0;
+        int i = 0;
+        while (i < numbers.length) {
+            if (numbers[i] < min) {
+                min = numbers[i];
+            }
+            i++;
+        }
+        return min;
+    }
 }

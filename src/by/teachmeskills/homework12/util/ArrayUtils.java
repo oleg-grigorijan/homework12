@@ -9,10 +9,4 @@ public class ArrayUtils {
         }
         return sum;
     }
-
-    public static double calcAverage(int... numbers) {
-        return numbers.length == 0
-                ? 0.0
-                : (double) sumAll(numbers) / numbers.length;
-    }
 }

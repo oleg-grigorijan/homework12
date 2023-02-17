@@ -3,6 +3,7 @@ package by.teachmeskills.homework12.util;
 import java.util.Scanner;
 
 public class EncryptionUtils {
+    final static int ENGLISH_ALPHABET = 26;
 
     /**
      * Encrypts given string with a Caesar cipher
@@ -14,7 +15,6 @@ public class EncryptionUtils {
      * @see <a href="https://en.wikipedia.org/wiki/Caesar_cipher">Caesar Chipher</a>
      */
     public static String encryptWithCaesar(String source, int key) {
-        final int ENGLISH_ALPHABET = 26;
         final char LETTER_A = 'A';
         char[] chars = source.toCharArray();
         String cipherString = "";
@@ -40,7 +40,7 @@ public class EncryptionUtils {
      * @see <a href="https://en.wikipedia.org/wiki/Caesar_cipher">Caesar Chipher</a>
      */
     public static String decryptWithCaesar(String source, int key) {
-        final int ENGLISH_ALPHABET = 26;
+
         final char LETTER_Z = 'Z';
         char[] chars = source.toCharArray();
         String cipherString = "";

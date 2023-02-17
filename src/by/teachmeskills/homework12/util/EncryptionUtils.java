@@ -19,18 +19,14 @@ public class EncryptionUtils {
 
         for (int i = 0; i < source.length(); i++)
         {
-            // get position of each character of inputStr in ALPHABET
             int pos = ALPHABET.indexOf(source.charAt(i));
 
-            // get encrypted char for each char of inputStr
             int encryptPos = (key + pos) % sumALPHABET;
             char encryptChar = ALPHABET.charAt(encryptPos);
 
-            // add encrypted char to encrypted string
             encryptStr += encryptChar;
         }
 
-        // return encrypted string
         return encryptStr;
     }
 
@@ -46,18 +42,22 @@ public class EncryptionUtils {
     public static String decryptWithCaesar(String source, int key) {
         source = source.toLowerCase();
 
+        // decryptStr to store decrypted data
         String decryptStr = "";
 
+        // use for loop for traversing each character of the input string
         for (int i = 0; i < source.length(); i++)
         {
             int pos = ALPHABET.indexOf(source.charAt(i));
             int decryptPos = (pos - key) % 26;
 
+            // if decryptPos is negative
             if (decryptPos < 0){
                 decryptPos = ALPHABET.length() + decryptPos;
             }
             char decryptChar = ALPHABET.charAt(decryptPos);
 
+            // add decrypted char to decrypted string
             decryptStr += decryptChar;
         }
         // return decrypted string

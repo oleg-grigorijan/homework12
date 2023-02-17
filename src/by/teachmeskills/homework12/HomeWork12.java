@@ -36,22 +36,19 @@ public class HomeWork12 {
 
                 }
                 case 3 -> {
-                    System.out.println("Enter the phrase to encrypt");
+                    System.out.println("Enter the phrase ");
                     String phrase = EncryptionUtils.getPhrase();
-                    System.out.println("Enter the key to shift ");
+                    System.out.println("Enter the key");
                     int key = EncryptionUtils.getKey();
-                    System.out.println("The result is: ");
-                    String result = EncryptionUtils.encryptWithCaesar(phrase, key);
+                    String result = EncryptionUtils.encryptCezarCipher(phrase,key);
                     System.out.println(result);
-
                 }
                 case 4 -> {
-                    System.out.println("Enter the phrase to decrypt");
+                    System.out.println("Enter the phrase ");
                     String phrase = EncryptionUtils.getPhrase();
-                    System.out.println("Enter the key to shift ");
+                    System.out.println("Enter the key");
                     int key = EncryptionUtils.getKey();
-                    System.out.println("The result is: ");
-                    String result = EncryptionUtils.decryptWithCaesar(phrase, key);
+                    String result = EncryptionUtils.decryptCezarCipher(phrase,key);
                     System.out.println(result);
 
                 }

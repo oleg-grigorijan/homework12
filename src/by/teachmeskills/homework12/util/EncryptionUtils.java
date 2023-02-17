@@ -15,17 +15,18 @@ public class EncryptionUtils {
      * @see <a href="https://en.wikipedia.org/wiki/Caesar_cipher">Caesar Chipher</a>
      */
     public static String encryptWithCaesar(String source, int key) {
-        final char LETTER_A = 'A';
+
         char[] chars = source.toCharArray();
         String cipherString = "";
         for (int i = 0; i < chars.length; i++) {
-            if (!((i > 'A' && i < 'Z'))) {
-                chars[i] = (char) (((int) source.charAt(i) - LETTER_A + key) % ENGLISH_ALPHABET + LETTER_A);
-                cipherString = String.valueOf(chars);
+            if (!((chars[i] > 'A' && chars[i] < 'Z'))) {
+                int result = (char) ((Math.floorMod(chars[i] - 'A' + key, ENGLISH_ALPHABET)));
+                chars[i] = (char) (result + 'A');
             } else {
                 throw new IllegalArgumentException("Uncorrected symbols");
             }
         }
+        cipherString = String.valueOf(chars);
         return cipherString;
     }
 
@@ -39,27 +40,36 @@ public class EncryptionUtils {
      * @throws IllegalArgumentException If source string contains unsupported characters
      * @see <a href="https://en.wikipedia.org/wiki/Caesar_cipher">Caesar Chipher</a>
      */
-    public static String decryptWithCaesar(String source, int key) {
+    public static String encryptCezarCipher(String source, int key) {
+        return shiftElementsByCezarCipher(source, key);
+    }
 
-        final char LETTER_Z = 'Z';
+    public static String decryptCezarCipher(String source, int key) {
+        return shiftElementsByCezarCipher(source, -key);
+    }
+
+    public static String shiftElementsByCezarCipher(String source, int key) {
+
         char[] chars = source.toCharArray();
         String cipherString = "";
         for (int i = 0; i < chars.length; i++) {
-            if ((Character.isUpperCase(chars[i]) && Character.isLetter(chars[i])) && !((i > 'A' && i < 'Z'))) {
-                chars[i] = (char) (((int) source.charAt(i) - LETTER_Z - key) % ENGLISH_ALPHABET + LETTER_Z);
-                cipherString = String.valueOf(chars);
+            if (!(chars[i] > 'A' && chars[i] < 'Z')) {
+                int result = (char) ((Math.floorMod(chars[i] - 'A' +
+                        key, ENGLISH_ALPHABET)));
+                chars[i] = (char) (result + 'A');
             } else {
                 throw new IllegalArgumentException("Uncorrected symbols");
             }
         }
+        cipherString = String.valueOf(chars);
         return cipherString;
-
     }
 
     public static String getPhrase() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
+
     public static int getKey() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();

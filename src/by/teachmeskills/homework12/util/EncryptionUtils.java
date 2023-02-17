@@ -1,6 +1,7 @@
 package by.teachmeskills.homework12.util;
 
 public class EncryptionUtils {
+    public static final String ALPHABET = "abcdefghijklmnopqrstuvwxyz";
 
     /**
      * Encrypts given string with a Caesar cipher
@@ -12,8 +13,24 @@ public class EncryptionUtils {
      * @see <a href="https://en.wikipedia.org/wiki/Caesar_cipher">Caesar Chipher</a>
      */
     public static String encryptWithCaesar(String source, int key) {
-        // TODO: Implement
-        throw new IllegalStateException("Not yet implemented");
+        source = source.toLowerCase();
+        String encryptStr = "";
+
+        for (int i = 0; i < source.length(); i++)
+        {
+            // get position of each character of inputStr in ALPHABET
+            int pos = ALPHABET.indexOf(source.charAt(i));
+
+            // get encrypted char for each char of inputStr
+            int encryptPos = (key + pos) % 26;
+            char encryptChar = ALPHABET.charAt(encryptPos);
+
+            // add encrypted char to encrypted string
+            encryptStr += encryptChar;
+        }
+
+        // return encrypted string
+        return encryptStr;
     }
 
     /**
@@ -26,7 +43,27 @@ public class EncryptionUtils {
      * @see <a href="https://en.wikipedia.org/wiki/Caesar_cipher">Caesar Chipher</a>
      */
     public static String decryptWithCaesar(String source, int key) {
-        // TODO: Implement
-        throw new IllegalStateException("Not yet implemented");
+        source = source.toLowerCase();
+
+        // decryptStr to store decrypted data
+        String decryptStr = "";
+
+        // use for loop for traversing each character of the input string
+        for (int i = 0; i < source.length(); i++)
+        {
+            int pos = ALPHABET.indexOf(source.charAt(i));
+            int decryptPos = (pos - key) % 26;
+
+            // if decryptPos is negative
+            if (decryptPos < 0){
+                decryptPos = ALPHABET.length() + decryptPos;
+            }
+            char decryptChar = ALPHABET.charAt(decryptPos);
+
+            // add decrypted char to decrypted string
+            decryptStr += decryptChar;
+        }
+        // return decrypted string
+        return decryptStr;
     }
 }

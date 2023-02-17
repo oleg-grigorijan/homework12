@@ -20,12 +20,14 @@ public class EncryptionUtils {
         String encryptedString = "";
         char currentCharacter;
 
-        for (int i = 0; i < source.length(); ++i) {
+        int encryptShift = getUniversalShift(key);
+
+        for (int i = 0; i < source.length(); i++) {
             currentCharacter = source.charAt(i);
 
             if (!Character.isWhitespace(currentCharacter)) {
 
-                currentCharacter = (char) (currentCharacter + key);
+                currentCharacter = (char) (currentCharacter + encryptShift);
 
                 if (currentCharacter > 'Z') {
                     currentCharacter = (char) (currentCharacter - 'Z' + 'A' - 1);
@@ -53,12 +55,13 @@ public class EncryptionUtils {
 
         String decryptedString = "";
         char currentCharacter;
+        int decriptShift = getUniversalShift(key);
 
         for (int i = 0; i < source.length(); i++) {
             currentCharacter = source.charAt(i);
 
             if (!Character.isWhitespace(currentCharacter)) {
-                currentCharacter = (char) (currentCharacter - key);
+                currentCharacter = (char) (currentCharacter - decriptShift);
 
                 if (currentCharacter < 'A') {
                     currentCharacter = (char) (currentCharacter + 'Z' - 'A' + 1);
@@ -78,5 +81,16 @@ public class EncryptionUtils {
             }
         }
         return true;
+    }
+
+    private static int getUniversalShift(int key) {
+
+        int shift = key % 26;
+
+        if (shift < 0) {
+            shift = 26 - Math.abs(shift);
+        }
+
+        return shift;
     }
 }

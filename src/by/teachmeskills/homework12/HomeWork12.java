@@ -14,9 +14,9 @@ public class HomeWork12 {
                 """
                         Choose task:
                         1. Sum
-                        2. Caesar cipher encryption
-                        3. Caesar cipher decryption
-                        4. Average
+                        2. Average
+                        3. Caesar cipher encryption
+                        4. Caesar cipher decryption
                         0. Exit"""
         );
         while (true) {
@@ -29,6 +29,11 @@ public class HomeWork12 {
                     System.out.println("Sum: " + sum);
                 }
                 case 2 -> {
+                    int[] numbers = UserInputUtils.requestArray();
+                    double avg = ArrayUtils.calcAverage(numbers);
+                    System.out.println("Average: " + avg);
+                }
+                case 3 -> {
                     Scanner sc = new Scanner(System.in);
                     System.out.print("String for encrypt: ");
                     String str = sc.nextLine();
@@ -37,7 +42,7 @@ public class HomeWork12 {
                     System.out.println("Encrypted string is: " +
                             EncryptionUtils.encryptWithCaesar(str, key));
                 }
-                case 3 -> {
+                case 4 -> {
                     Scanner sc = new Scanner(System.in);
                     System.out.print("String for decrypt: ");
                     String str = sc.nextLine();
@@ -45,11 +50,6 @@ public class HomeWork12 {
                     int key = sc.nextInt();
                     System.out.println("Decrypted string is: " +
                             EncryptionUtils.decryptWithCaesar(str, key));
-                }
-                case 4 -> {
-                    int[] numbers = UserInputUtils.requestArray();
-                    double avg = ArrayUtils.calcAverage(numbers);
-                    System.out.println("Average: " + avg);
                 }
                 case 0 -> {
                     return;

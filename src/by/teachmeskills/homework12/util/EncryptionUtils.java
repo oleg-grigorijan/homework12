@@ -12,17 +12,7 @@ public class EncryptionUtils {
      * @see <a href="https://en.wikipedia.org/wiki/Caesar_cipher">Caesar Chipher</a>
      */
     public static String encryptWithCaesar(String source, int key) {
-        if (!isReliableToCoding(source)) {
-            throw new IllegalArgumentException("String need to contain only upper-case english letters");
-        }
-        char[] chars = source.toCharArray();
-        for (int i = 0; i < chars.length; i++) {
-            chars[i] += key;
-            if (chars[i] > 'Z') {
-                chars[i] = (char) (chars[i] - 'Z' + 'A' - 1);
-            }
-        }
-        return String.valueOf(chars);
+        return shiftCharsByAlphabet(source, key);
     }
 
     /**
@@ -35,26 +25,26 @@ public class EncryptionUtils {
      * @see <a href="https://en.wikipedia.org/wiki/Caesar_cipher">Caesar Chipher</a>
      */
     public static String decryptWithCaesar(String source, int key) {
+        return shiftCharsByAlphabet(source, -key);
+    }
+
+    public static final int ENGLISH_ALPHABET_LENGTH = 26;
+    public static String shiftCharsByAlphabet(String source, int key) {
         if (!isReliableToCoding(source)) {
             throw new IllegalArgumentException("String need to contain only upper-case english letters");
         }
         char[] chars = source.toCharArray();
         for (int i = 0; i < chars.length; i++) {
-            chars[i] -= key;
-            if (chars[i] < 'A') {
-                chars[i] = (char) (chars[i] + 'Z' - 'A' + 1);
-            }
+            int sourceAlphabetIndex = chars[i] - 'A';
+            int resultAlphabetIndex = Math.floorMod(sourceAlphabetIndex + key, ENGLISH_ALPHABET_LENGTH);
+            chars[i] = (char) (resultAlphabetIndex + 'A');
         }
         return String.valueOf(chars);
     }
 
     public static boolean isReliableToCoding(String source) {
-        if (source.isBlank()) {
-            throw new IllegalArgumentException("Error. Inadmissible length of string");
-        }
-        char[] chars = source.toCharArray();
-        for (int i = 0; i < chars.length; i++) {
-            if (!(i >= 'A' || i <= 'Z')) {
+        for (int i = 0; i < source.length(); i++) {
+            if (!(source.charAt(i) >= 'A' || source.charAt(i) <= 'Z')) {
                 return false;
             }
         }

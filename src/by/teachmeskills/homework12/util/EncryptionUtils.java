@@ -14,21 +14,6 @@ public class EncryptionUtils {
      * @throws IllegalArgumentException If source string contains unsupported characters
      * @see <a href="https://en.wikipedia.org/wiki/Caesar_cipher">Caesar Chipher</a>
      */
-    public static String encryptWithCaesar(String source, int key) {
-
-        char[] chars = source.toCharArray();
-        String cipherString = "";
-        for (int i = 0; i < chars.length; i++) {
-            if (!((chars[i] > 'A' && chars[i] < 'Z'))) {
-                int result = (char) ((Math.floorMod(chars[i] - 'A' + key, ENGLISH_ALPHABET)));
-                chars[i] = (char) (result + 'A');
-            } else {
-                throw new IllegalArgumentException("Uncorrected symbols");
-            }
-        }
-        cipherString = String.valueOf(chars);
-        return cipherString;
-    }
 
 
     /**

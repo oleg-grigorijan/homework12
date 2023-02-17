@@ -2,6 +2,7 @@ package by.teachmeskills.homework12.util;
 
 public class EncryptionUtils {
 
+    private static final int ENGLISH_ALPHABET_LENGTH = 26;
     /**
      * Encrypts given string with a Caesar cipher
      *
@@ -85,10 +86,10 @@ public class EncryptionUtils {
 
     private static int getUniversalShift(int key) {
 
-        int shift = key % 26;
+        int shift = key % ENGLISH_ALPHABET_LENGTH;
 
         if (shift < 0) {
-            shift = 26 - Math.abs(shift);
+            shift = ENGLISH_ALPHABET_LENGTH - Math.abs(shift);
         }
 
         return shift;

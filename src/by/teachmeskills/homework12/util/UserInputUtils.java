@@ -21,17 +21,29 @@ public class UserInputUtils {
         return array;
     }
 
-    public static String requestString(){
-        Scanner scanner =new Scanner(System.in);
+    public static String requestString() {
         System.out.println("String for encryption: ");
-        String source= scanner.nextLine();
-        return source;
+        Scanner scanner = new Scanner(System.in);
+        String tmp = scanner.nextLine();
+        if (tmp.isBlank()) {
+            throw new IllegalStateException("Line is empty");
+        }
+
+        for (int i = 0; i < tmp.length(); i++) {
+            if (!(tmp.charAt(i) >= 'A' && tmp.charAt(i) <= 'Z') && tmp.charAt(i) != ' ') {
+                //TODO: Implement
+                throw new IllegalStateException("Incorrect line was entered");
+            }
+        }
+        return tmp;
     }
 
-    public static int requestKey(){
-        Scanner scanner =new Scanner(System.in);
-        System.out.println("String for encryption: ");
-
+    public static int requestKey() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Key for encryption: ");
+        if (!scanner.hasNextInt()) {
+            throw new IllegalStateException("The key is not a number");
+        }
         return scanner.nextInt();
     }
 }

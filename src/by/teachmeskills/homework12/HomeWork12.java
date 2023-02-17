@@ -10,6 +10,8 @@ public class HomeWork12 {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        String source = null;
+        int key = 0;
         System.out.println(
                 """
                         Choose task:
@@ -34,20 +36,18 @@ public class HomeWork12 {
                     System.out.println("Average: " + avg);
                 }
                 case 3 -> {
-                    String source=UserInputUtils.requestString();
-//                    int key=UserInputUtils.requestKey();
-                    int key=3;
-                    EncryptionUtils.encryptWithCaesar(source,key);
-                    System.out.println("Encryption string: "+EncryptionUtils.encryptWithCaesar(source,key));
-                    // TODO: Implement
-                    if (source.isEmpty()) {
-                        throw new IllegalStateException("Not yet implemented");
-                    }
-                    break;
+                    source = UserInputUtils.requestString();
+                    key = UserInputUtils.requestKey();
+                    source = EncryptionUtils.encryptWithCaesar(source, key);
+                    System.out.println("Encryption string: " + source);
                 }
                 case 4 -> {
-                    // TODO: Implement
-                    throw new IllegalStateException("Not yet implemented");
+                    if (source == null) {
+                        throw new IllegalStateException("Decryption is not possible because " +
+                                "the value for encryption is not set");
+                    }
+                    System.out.println("Decryption string: " + EncryptionUtils.decryptWithCaesar(source, key));
+                    source = null;
                 }
                 case 0 -> {
                     return;

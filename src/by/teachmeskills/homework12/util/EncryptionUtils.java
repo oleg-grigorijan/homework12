@@ -1,5 +1,7 @@
 package by.teachmeskills.homework12.util;
 
+import javax.print.DocFlavor;
+import java.security.Key;
 import java.util.Arrays;
 
 public class EncryptionUtils {
@@ -14,23 +16,18 @@ public class EncryptionUtils {
      * @see <a href="https://en.wikipedia.org/wiki/Caesar_cipher">Caesar Chipher</a>
      */
     public static String encryptWithCaesar(String source, int key) {
-        char [] result = source.toCharArray();
+        char[] result = source.toCharArray();
         for (int i = 0; i < source.length(); i++) {
-            key=(char)key;
-            result[i]+=key;
-            if (result[i]>'Z') {
-                result[i]= (char) ((result[i]-'A')%26+'A');
-                System.out.println(25 % 26);
-//                result[i]= (char) ('A'-1+key);
+            if (result[i] != ' ') {
+                result[i] += key % 26;
+            }
+            if (result[i] > 'Z') {
+                result[i] -= 26;
             }
         }
-
-        source=String.copyValueOf(result);
+        source = String.copyValueOf(result);
         return source;
-//        // TODO: Implement
-//        throw new IllegalStateException("Not yet implemented");
     }
-
 
 
     /**
@@ -43,7 +40,18 @@ public class EncryptionUtils {
      * @see <a href="https://en.wikipedia.org/wiki/Caesar_cipher">Caesar Chipher</a>
      */
     public static String decryptWithCaesar(String source, int key) {
-        // TODO: Implement
-        throw new IllegalStateException("Not yet implemented");
+        System.out.println("String for decryption:" + source);
+        char[] result = source.toCharArray();
+        for (int i = 0; i < source.length(); i++) {
+            if (result[i] != ' ') {
+                result[i] -= key % 26;
+                result[i] += 26;
+            }
+            if (result[i] > 'Z') {
+                result[i] -= 26;
+            }
+        }
+        source = String.copyValueOf(result);
+        return source;
     }
 }

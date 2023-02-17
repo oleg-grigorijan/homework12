@@ -2,7 +2,7 @@ package by.teachmeskills.homework12.util;
 
 public class EncryptionUtils {
     static int sumALPHABET = 26;
-    public static final String ALPHABET = "abcdefghijklmnopqrstuvwxyz";
+    public static final String ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     /**
      * Encrypts given string with a Caesar cipher
@@ -14,7 +14,7 @@ public class EncryptionUtils {
      * @see <a href="https://en.wikipedia.org/wiki/Caesar_cipher">Caesar Chipher</a>
      */
     public static String encryptWithCaesar(String source, int key) {
-        source = source.toLowerCase();
+        source = source.toUpperCase();
         String encryptStr = "";
 
         for (int i = 0; i < source.length(); i++)
@@ -40,7 +40,7 @@ public class EncryptionUtils {
      * @see <a href="https://en.wikipedia.org/wiki/Caesar_cipher">Caesar Chipher</a>
      */
     public static String decryptWithCaesar(String source, int key) {
-        source = source.toLowerCase();
+        source = source.toUpperCase();
 
         String decryptStr = "";
 

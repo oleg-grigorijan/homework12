@@ -14,9 +14,9 @@ public class HomeWork12 {
                 """
                         Choose task:
                         1. Sum
-                        2. Caesar cipher encryption
-                        3. Caesar cipher decryption           
-                        4. Average
+                        2. Average
+                        3. Caesar cipher encryption          
+                        4. Caesar cipher decryption
                         0. Exit"""
         );
         while (true) {
@@ -29,6 +29,11 @@ public class HomeWork12 {
                     System.out.println("Sum: " + sum);
                 }
                 case 2 -> {
+                    int[] numbers = UserInputUtils.requestArray();
+                    double avg = ArrayUtils.calcAverage(numbers);
+                    System.out.println("Average: " + avg);
+                }
+                case 3 -> {
                     System.out.println("Enter string (uppercase latin characters): ");
                     String str = scanner.next();
                     System.out.print("Enter key: ");
@@ -36,18 +41,13 @@ public class HomeWork12 {
                     String decryptString = EncryptionUtils.encryptWithCaesar(str, key);
                     System.out.println("Your decryption string: " + decryptString);
                 }
-                case 3 -> {
+                case 4 -> {
                     System.out.println("Enter decryption string (uppercase latin characters): ");
                     String decryptStr = scanner.next();
                     System.out.print("Enter key: ");
                     int key = scanner.nextInt();
                     String encryptString = EncryptionUtils.decryptWithCaesar(decryptStr, key);
                     System.out.println("Your encryption string: " + encryptString);
-                }
-                case 4 -> {
-                    int[] numbers = UserInputUtils.requestArray();
-                    double avg = ArrayUtils.calcAverage(numbers);
-                    System.out.println("Average: " + avg);
                 }
                 case 0 -> {
                     return;

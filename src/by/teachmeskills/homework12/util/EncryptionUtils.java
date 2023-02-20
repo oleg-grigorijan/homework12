@@ -5,6 +5,7 @@ import java.security.Key;
 import java.util.Arrays;
 
 public class EncryptionUtils {
+    public static final int ENGLISH_ALPHABET_LENGTH = 26;
 
     /**
      * Encrypts given string with a Caesar cipher
@@ -16,17 +17,7 @@ public class EncryptionUtils {
      * @see <a href="https://en.wikipedia.org/wiki/Caesar_cipher">Caesar Chipher</a>
      */
     public static String encryptWithCaesar(String source, int key) {
-        char[] result = source.toCharArray();
-        for (int i = 0; i < source.length(); i++) {
-            if (result[i] != ' ') {
-                result[i] += key % 26;
-            }
-            if (result[i] > 'Z') {
-                result[i] -= 26;
-            }
-        }
-        source = String.copyValueOf(result);
-        return source;
+        return calculateOffsetAlphabet(source, key);
     }
 
 
@@ -40,16 +31,15 @@ public class EncryptionUtils {
      * @see <a href="https://en.wikipedia.org/wiki/Caesar_cipher">Caesar Chipher</a>
      */
     public static String decryptWithCaesar(String source, int key) {
-        System.out.println("String for decryption:" + source);
+        return calculateOffsetAlphabet(source, -key);
+    }
+
+    private static String calculateOffsetAlphabet(String source, int key) {
         char[] result = source.toCharArray();
         for (int i = 0; i < source.length(); i++) {
-            if (result[i] != ' ') {
-                result[i] -= key % 26;
-                result[i] += 26;
-            }
-            if (result[i] > 'Z') {
-                result[i] -= 26;
-            }
+            int sourseIndexLetter = result[i] - 'A';
+            int resultIndexLetter = Math.floorMod(sourseIndexLetter + key, ENGLISH_ALPHABET_LENGTH);
+            result[i] = (char) (resultIndexLetter + 'A');
         }
         source = String.copyValueOf(result);
         return source;

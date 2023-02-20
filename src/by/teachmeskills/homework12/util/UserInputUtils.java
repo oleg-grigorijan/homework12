@@ -39,11 +39,12 @@ public class UserInputUtils {
     }
 
     public static int requestKey() {
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Key for encryption: ");
         if (!scanner.hasNextInt()) {
             throw new IllegalStateException("The key is not a number");
         }
-        return scanner.nextInt();
+        else return scanner.nextInt();
     }
 }

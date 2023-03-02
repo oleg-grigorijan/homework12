@@ -14,8 +14,9 @@ public class EncryptionUtils {
      * @throws IllegalArgumentException If source string contains unsupported characters
      * @see <a href="https://en.wikipedia.org/wiki/Caesar_cipher">Caesar Chipher</a>
      */
-
-
+    public static String encryptCezarCipher(String source, int key) {
+        return shiftElementsByCezarCipher(source, key);
+    }
     /**
      * Decrypts given string with a Caesar cipher
      *
@@ -25,10 +26,6 @@ public class EncryptionUtils {
      * @throws IllegalArgumentException If source string contains unsupported characters
      * @see <a href="https://en.wikipedia.org/wiki/Caesar_cipher">Caesar Chipher</a>
      */
-    public static String encryptCezarCipher(String source, int key) {
-        return shiftElementsByCezarCipher(source, key);
-    }
-
     public static String decryptCezarCipher(String source, int key) {
         return shiftElementsByCezarCipher(source, -key);
     }
@@ -38,8 +35,8 @@ public class EncryptionUtils {
         char[] chars = source.toCharArray();
         String cipherString = "";
         for (int i = 0; i < chars.length; i++) {
-            if (!(chars[i] > 'A' && chars[i] < 'Z')) {
-                int result = (char) ((Math.floorMod(chars[i] - 'A' +
+            if (!(chars[i] >= 'A' && chars[i] <= 'Z')) {
+                int result =  ((Math.floorMod(chars[i] - 'A' +
                         key, ENGLISH_ALPHABET)));
                 chars[i] = (char) (result + 'A');
             } else {
